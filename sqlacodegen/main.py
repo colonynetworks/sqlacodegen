@@ -31,8 +31,9 @@ def main():
     args = parser.parse_args()
 
     if args.version:
-        version = pkg_resources.get_distribution('sqlacodegen').parsed_version
-        print(version.public)
+        # version = pkg_resources.get_distribution('sqlacodegen').parsed_version
+        # print(version.public)
+        print('1.1.12-jim')
         return
     if not args.url:
         print('You must supply a url\n', file=sys.stderr)
