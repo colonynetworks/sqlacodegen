@@ -199,7 +199,11 @@ class ModelClass(Model):
     @staticmethod
     def _tablename_to_classname(tablename, inflect_engine):
         camel_case_name = ''.join(part[:1].upper() + part[1:] for part in tablename.split('_'))
-        return inflect_engine.singular_noun(camel_case_name) or camel_case_name
+        # Fixing a bug with inflect module.
+        if tablename.endswith('address'):
+            return camel_case_name
+        else:
+            return inflect_engine.singular_noun(camel_case_name) or camel_case_name
 
     @staticmethod
     def _convert_to_valid_identifier(name):
