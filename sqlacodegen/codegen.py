@@ -200,7 +200,7 @@ class ModelClass(Model):
     def _tablename_to_classname(tablename, inflect_engine):
         camel_case_name = ''.join(part[:1].upper() + part[1:] for part in tablename.split('_'))
         # Fixing a bug with inflect module.
-        if tablename.endswith('ss'):
+        if tablename.endswith('ss') or tablename.endswith('status'):
             return camel_case_name
         else:
             return inflect_engine.singular_noun(camel_case_name) or camel_case_name
